@@ -56,5 +56,11 @@ public class LocalUser {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	@Override
+	public String toString() {
+		return "LocalUser [userId=" + userId + ", userName=" + userName + ", email=" + email + ", title=" + title + "]";
 	}  
+	
 }

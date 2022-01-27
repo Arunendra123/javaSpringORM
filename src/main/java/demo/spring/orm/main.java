@@ -1,5 +1,6 @@
 package demo.spring.orm;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,17 +8,18 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import demo.spring.orm.userEntity.LocalUser;
 import demo.spring.orm.userService.UserService;
+import net.sf.jasperreports.engine.JRException;
 
 
 public class main {
-	public static void main(String args[]) {
+	public static void main(String args[]) throws FileNotFoundException, JRException {
 		
        	ApplicationContext context= new ClassPathXmlApplicationContext("config.xml");
        	UserService userService=context.getBean("userService",UserService.class);
        	
        	Scanner s=new Scanner(System.in);
        	while(true) {
-       		System.out.println("\n1: Insert \n2: Update \n3: GetUser \n4: List User\n5: Delete");
+       		System.out.println("\n1: Insert \n2: Update \n3: GetUser \n4: List User\n5: Delete\n6: Generate Report");
        		int opt=s.nextInt();
        		switch(opt){
        		case 1:
@@ -62,7 +64,7 @@ public class main {
 		           id=s.next();
 		           userService.delete(Integer.parseInt(id));
 		           System.out.print("User deleted");
-   				   break;       			
+   				   break;   
        		default:
        				System.out.print("Incorect input\n");
        				
